@@ -1,0 +1,17 @@
+body, html {
+    height:100%;
+    margin: 0;
+}
+
+.imgmonedero {
+    width:200px;
+    height:150px;
+}
+
+
+.icon-image{
+    height: 100px;
+    width: 200px;
+    background-size: contain;
+    background-repeat: no-repeat;
+}

@@ -1,0 +1,35 @@
+<?php
+
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\NoticiaController;
+use App\Http\Controllers\ComentarioController;
+use App\Http\Controllers\FrontendController;
+
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider within a group which
+| contains the "web" middleware group. Now create something great!
+|
+*/
+
+
+Route::get('/', [FrontendController::class, 'index']);
+
+
+Route::get('backend', [NoticiaController::class, 'index'])->name('backend');
+
+
+Route::resource('frontend',FrontendController::class, ['names' => 'frontend']) -> only(['index','show']);
+
+
+Route::resource('backend/noticias', NoticiaController::class, ['names' => 'backend.noticia']);
+
+
+Route::resource('backend/comentario', ComentarioController::class, ['names' => 'backend.comentario']);
+
+Route::get('backend/comentario/{idnoticia}/comentarios', [ComentarioController::class, 'showComentarios'])->name('backend.comentario.showcomentarios');
+Route::get('backend/comentario/create/{idnoticia}', [ComentarioController::class, 'addComentarios'])->name('backend.comentario.addcomentarios');
